@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getMockData } from '../utils/localStorageUtils';
 import { v4 as uuidv4 } from 'uuid';
-import Layout from '../components/Layout'; // ✅ Import the Layout wrapper
+import Layout from '../components/Layout';
 
 const ShipsPage = () => {
   const [ships, setShips] = useState([]);
