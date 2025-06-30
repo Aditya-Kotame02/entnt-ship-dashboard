@@ -1,70 +1,157 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ENTNT Ship Maintenance Dashboard
 
-## Available Scripts
+This is a frontend-only React application that simulates a ship maintenance management system. It supports role-based access, management of ships and components, job assignments, calendar scheduling, and KPI dashboards. All data is persisted using localStorage as per the assignment requirements.
 
-In the project directory, you can run:
+This project was submitted as part of the ENTNT Frontend Developer (React) technical assessment.
 
-### `npm start`
+## Live Demo and Source Code
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Deployed Application:** [https://entnt-ship-dashboard-egew.vercel.app](https://entnt-ship-dashboard-egew.vercel.app)
+- **GitHub Repository:** [https://github.com/Aditya-Kotame02/entnt-ship-dashboard](https://github.com/Aditya-Kotame02/entnt-ship-dashboard)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+### User Authentication (Simulated)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Hardcoded users with role-based access:
+  - `admin@entnt.in` / `admin123`
+  - `inspector@entnt.in` / `inspect123`
+  - `engineer@entnt.in` / `engine123`
+- Authentication state persists via localStorage
+- Conditional route access based on user roles
 
-### `npm run build`
+### Ships Management
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Create, edit, delete ships
+- View ship details, including general info, installed components, and maintenance history
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Components Management
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Add, update, or remove components under specific ships
+- View component details: name, serial number, install date, last maintenance date
 
-### `npm run eject`
+### Maintenance Jobs
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Create jobs for components
+- Assign engineer, priority, type, and scheduled date
+- Track job progress: Open → In Progress → Completed
+- Filter jobs by ship, status, and priority
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Maintenance Calendar
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Displays all scheduled jobs in a monthly calendar view
+- Selecting a date shows the list of jobs scheduled for that day
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Notification Center
 
-## Learn More
+- In-app notifications for job creation, updates, and completion
+- Notifications can be dismissed
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### KPI Dashboard
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Displays:
+  - Total number of ships
+  - Components with overdue maintenance
+  - Jobs in progress
+  - Jobs completed
 
-### Code Splitting
+### Responsive Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Fully responsive across desktop, tablet, and mobile
+- Built with TailwindCSS for modern UI styling
 
-### Analyzing the Bundle Size
+## Application Navigation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+After logging in, the user is redirected to the dashboard. Navigation is handled using React Router v6.
 
-### Making a Progressive Web App
+| Route            |                  Description                      |
+|------------------|---------------------------------------------------|
+| `/`              | Login page                                        |
+| `/dashboard`     | KPI dashboard                                     |
+| `/ships`         | List and manage ships                             |
+| `/ships/:id`     | Detailed view of a ship, its components, and jobs |
+| `/jobs`          | Manage maintenance jobs                           |
+| `/calendar`      | View scheduled jobs by date                       |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Role-based access:**
 
-### Advanced Configuration
+| Role       |                    Access                         |
+|------------|---------------------------------------------------|
+| Admin      | Full access to all features                       |
+| Inspector  | Can view ships, create and update jobs            |
+| Engineer   | Can view assigned jobs and mark them as completed |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Technology Stack
 
-### Deployment
+- React
+- React Router v6
+- Context API
+- TailwindCSS
+- react-calendar
+- localStorage (for data persistence)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Project Structure
 
-### `npm run build` fails to minify
+    src/
+    ├── components/
+    │   ├── Calendar/
+    │   ├── Notifications/
+    │   └── Ships/
+    ├── context/
+    ├── pages/
+    ├── routes/
+    ├── utils/
+    ├── App.jsx
+    └── index.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Installation and Running Locally
+
+1. Clone the repository:
+
+       git clone https://github.com/Aditya-Kotame02/entnt-ship-dashboard.git
+       cd entnt-ship-dashboard
+
+2. Install dependencies:
+
+       npm install
+
+3. Start the development server:
+
+       npm start
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## User Roles and Credentials
+
+| Role      | Email               | Password    |
+|-----------|---------------------|-------------|
+| Admin     | admin@entnt.in      | admin123    |
+| Inspector | inspector@entnt.in  | inspect123  |
+| Engineer  | engineer@entnt.in   | engineer123 |
+
+## Known Issues or Limitations
+
+- Data is stored only in localStorage (no backend/API)
+- Hardcoded users and simulated authentication
+- No drag-and-drop or calendar rescheduling features
+- Cannot reassign components between ships
+
+## Technical Considerations
+
+- Used Context API for state sharing across components
+- TailwindCSS for responsive and maintainable styling
+- Data models are stored and retrieved from localStorage
+- Role-based access handled in routes using ProtectedRoute
+
+## Submission Details
+
+- GitHub Repository: [https://github.com/Aditya-Kotame02/entnt-ship-dashboard](https://github.com/Aditya-Kotame02/entnt-ship-dashboard)
+- Deployed Link: [https://entnt-ship-dashboard-egew.vercel.app](https://entnt-ship-dashboard-egew.vercel.app)
+- Submitted to: hr@entnt.in
+
+## Author
+
+**Aditya Kotame**  
+Email: adityakotame17@gmail.com  
+LinkedIn: [https://www.linkedin.com/in/aditya-kotame](https://www.linkedin.com/in/aditya-kotame)
