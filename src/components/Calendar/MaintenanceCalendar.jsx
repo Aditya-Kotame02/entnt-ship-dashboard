@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Calendar from 'react-calendar';
-import { createContext, useState } from 'react';
+import { createContext } from 'react'; // ✅ Fixed: removed duplicate useState
 import 'react-calendar/dist/Calendar.css';
 import { getMockData } from '../../utils/localStorageUtils';
 
