@@ -2,14 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalProvider } from './context/GlobalContext';
 
-// Pages
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import ShipsPage from './pages/ShipsPage';
 import ShipDetailPage from './pages/ShipDetailPage';
 import JobsPage from './pages/JobsPage';
 
-// Components
 import MaintenanceCalendar from './components/Calendar/MaintenanceCalendar';
 import NotificationCenter from './components/Notifications/NotificationCenter';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -18,7 +16,7 @@ function App() {
   return (
     <GlobalProvider>
       <Router>
-        {/* Global Notification Display */}
+        {}
         <NotificationCenter />
 
         <Routes>
