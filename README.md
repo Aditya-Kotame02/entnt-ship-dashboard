@@ -153,5 +153,5 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
 ## Author
 
 **Aditya Kotame**  
-Email: adityakotame17@gmail.com  
+Email: adityakotame@gmail.com  
 LinkedIn: [https://www.linkedin.com/in/aditya-kotame](https://www.linkedin.com/in/aditya-kotame)
