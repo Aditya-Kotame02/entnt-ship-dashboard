@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Calendar from 'react-calendar';
+import { createContext, useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import { getMockData } from '../../utils/localStorageUtils';
 
@@ -8,17 +9,17 @@ const MaintenanceCalendar = () => {
   const [jobs, setJobs] = useState([]);
   const [selectedJobs, setSelectedJobs] = useState([]);
 
+  const filterJobsForDate = useCallback((date) => {
+    const selectedDate = date.toISOString().split('T')[0];
+    const filtered = jobs.filter(job => job.scheduledDate === selectedDate);
+    setSelectedJobs(filtered);
+  }, [jobs]);
+
   useEffect(() => {
     const { jobs } = getMockData();
     setJobs(jobs);
     filterJobsForDate(new Date());
-  }, []);
-
-  const filterJobsForDate = (date) => {
-    const selectedDate = date.toISOString().split('T')[0];
-    const filtered = jobs.filter(job => job.scheduledDate === selectedDate);
-    setSelectedJobs(filtered);
-  };
+  }, [filterJobsForDate]);
 
   const handleDateChange = (date) => {
     setValue(date);
